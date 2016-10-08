@@ -1,0 +1,36 @@
+{
+  "name": "koyoribot",
+  "version": "1.0.0",
+  "description": "cute things",
+  "main": "index.js",
+  "scripts": {
+    "test": "koyori test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flaunt5/koyoribot.git"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "dependencies": {
+    "api-ai-botkit": "^1.0.3",
+    "apiai": "^2.0.7",
+    "botkit": "^0.4.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^2.0.0",
+    "html-entities": "^1.2.0",
+    "node-uuid": "^1.4.7"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  },
+  "author": "Joris Brandt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flaunt5/koyoribot/issues"
+  },
+  "homepage": "https://github.com/flaunt5/koyoribot#readme"
+}
