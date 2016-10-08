@@ -1,14 +1,33 @@
 "use strict";
 
-var Botkit = require('botkit');
-var express = require('express');
-var app     = express();
+const Botkit = require('botkit');
+const express = require('express');
+const app     = express();
+const uuid = require('node-uuid');
+const http = require('http');
+const Entities = require('html-entities').XmlEntities;
+const decoder = new Entities();
 
 const SLACK_TOKEN = process.env.slackkey
 const ACCESS_TOKEN = process.env.accesstoken
+const APIAI_KEY = process.env.APIAI_KEY_DEV
+
+const apiai = apiaibotkit(APIAI_KEY);
+
+const devConfig = process.env.DEVELOPMENT_CONFIG == 'true';
+
+const apiaiOptions = {};
+if (devConfig) {
+    apiaiOptions.hostname = process.env.DEVELOPMENT_HOST;
+    apiaiOptions.path = "/api/query";
+}
+
+const apiAiService = apiai(APIAI_KEY, apiaiOptions);
+
+const sessionIds = new Map();
 
 var controller = Botkit.slackbot({
-  debug: false
+  debug: true
   //include "log: false" to disable logging
   //or a "logLevel" integer from 0 to 7 to adjust logging verbosity
 });
