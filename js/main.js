@@ -1,6 +1,7 @@
 "use strict";
 
 const Botkit = require('botkit');
+const apiai = require('apiai');
 const express = require('express');
 const app     = express();
 const uuid = require('node-uuid');
@@ -11,8 +12,6 @@ const decoder = new Entities();
 const SLACK_TOKEN = process.env.slackkey
 const ACCESS_TOKEN = process.env.accesstoken
 const APIAI_KEY = process.env.APIAI_KEY_DEV
-
-const apiai = apiaibotkit(APIAI_KEY);
 
 const devConfig = process.env.DEVELOPMENT_CONFIG == 'true';
 
