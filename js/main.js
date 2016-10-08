@@ -1,6 +1,8 @@
 "use strict";
 
 var Botkit = require('botkit');
+var express = require('express');
+var app     = express();
 
 const SLACK_TOKEN = process.env.slackkey
 const ACCESS_TOKEN = process.env.accesstoken
@@ -15,6 +17,16 @@ var controller = Botkit.slackbot({
 controller.spawn({
   token: SLACK_TOKEN,
 }).startRTM()
+
+app.set('port', (process.env.PORT || 5000));
+
+//For avoidong Heroku $PORT error
+app.get('/', function(request, response) {
+    var result = 'App is running'
+    response.send(result);
+}).listen(app.get('port'), function() {
+    console.log('App is running, server is listening on port ', app.get('port'));
+});
 
 controller.hears(['.*'],['direct_message','direct_mention','mention', 'ambient'], function(bot,message) {
     console.log(message.text);
