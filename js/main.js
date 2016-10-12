@@ -32,9 +32,9 @@ var controller = Botkit.slackbot({
 });
 
 // connect the bot to a stream of messages
-controller.spawn({
-  token: SLACK_TOKEN,
-}).startRTM()
+// controller.spawn({
+//   token: SLACK_TOKEN,
+// }).startRTM()
 
 app.set('port', (process.env.PORT || 5000));
 
